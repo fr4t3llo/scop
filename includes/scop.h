@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 02:13:39 by skasmi            #+#    #+#             */
-/*   Updated: 2025/03/10 02:46:26 by skasmi           ###   ########.fr       */
+/*   Updated: 2025/03/10 14:09:56 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define SCOP_H
 
 #include <libc.h>
-#include "../minilibx_mms_20191025_beta/mlx.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 
 
 #endif
