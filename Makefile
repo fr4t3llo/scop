@@ -6,35 +6,35 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 02:19:43 by skasmi            #+#    #+#              #
-#    Updated: 2025/03/10 14:41:49 by skasmi           ###   ########.fr        #
+#    Updated: 2025/03/11 00:42:26 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC=cc
-CFLAGS=  -Wall -Wextra -Werror
-NAME=scop
-HEADER=includes/scop.h
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -arch arm64
+NAME = scop
+HEADER = includes/scop.h
 
-SRCS=man/main.c
+SRCS = man/main.c
+OBJCTS = $(SRCS:%.c=%.o)
 
-OBJCTS=$(SRCS:%.c=%.o)
+BREW_PREFIX = /Users/skasmi/Desktop/1337projects/scop
+BREW_PREFIXX = /Users/skasmi/homebrew
+MLX_PATH = $(BREW_PREFIX)/MLX42/build
+GLFW_PATH = $(BREW_PREFIXX)/opt/glfw
 
-# Path to MiniLibX build folder (update this to the correct path)
-MLX_PATH=MLX42/build
-# Specify the correct library name (libmlx42.a)
-MLX_LIB=-L$(MLX_PATH) -lmlx42
+MLX_LIB = $(MLX_PATH)/libmlx42.a
+GLFW_LIB = -L$(GLFW_PATH)/lib -lglfw
 
-# GLFW link flags (update this based on your system setup)
-GLFW_LIB=-lglfw
+MACOS_FRAMEWORKS = -framework Cocoa -framework OpenGL -framework IOKit
 
-# MacOS specific framework flags
-MACOS_FRAMEWORKS=-framework Cocoa -framework OpenGL -framework IOKit
+INCLUDES = -I$(BREW_PREFIX)/MLX42/include -I$(GLFW_PATH)/include
 
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(NAME) : $(OBJCTS) $(HEADER)
-	@$(CC) $(CFLAGS) $(OBJCTS) $(MLX_LIB) $(GLFW_LIB) $(MACOS_FRAMEWORKS) -o $(NAME)
+$(NAME): $(OBJCTS) $(HEADER)
+	$(CC) $(CFLAGS) $(OBJCTS) $(MLX_LIB) $(GLFW_LIB) $(MACOS_FRAMEWORKS) -o $(NAME)
 	@echo "\033[31m░█████╗░\033[31m██╗░░░██╗\033[31m██████╗░  \033[32m██████╗░\033[32m██████╗░"
 	@echo "\033[31m██╔══██╗\033[31m██║░░░██║\033[31m██╔══██╗  \033[32m╚════██╗\033[32m██╔══██╗"
 	@echo "\033[31m██║░░╚═╝\033[31m██║░░░██║\033[31m██████╦╝  \033[32m░█████╔╝\033[32m██║░░██║"
@@ -42,7 +42,7 @@ $(NAME) : $(OBJCTS) $(HEADER)
 	@echo "\033[31m╚█████╔╝\033[31m╚██████╔╝\033[31m██████╦╝  \033[32m██████╔╝\033[32m██████╔╝"
 	@echo "\033[31m░╚════╝░\033[31m░╚═════╝░\033[31m╚═════╝░  \033[32m╚═════╝░\033[32m╚═════╝░"
 
-all:   $(NAME)
+all: $(NAME)
 
 clean:
 	rm -f $(OBJCTS)
