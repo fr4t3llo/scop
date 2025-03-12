@@ -6,7 +6,7 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 02:19:43 by skasmi            #+#    #+#              #
-#    Updated: 2025/03/12 01:04:39 by skasmi           ###   ########.fr        #
+#    Updated: 2025/03/12 01:04:44 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ INCLUDES = -I$(BREW_PREFIX)/MLX42/include -I$(GLFW_PATH)/include
 
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+
 
 
 
