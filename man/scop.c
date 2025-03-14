@@ -32,8 +32,6 @@ int vertex_count = 0, face_count = 0;
 
 
 
-
-
 void load_obj(const char* filename) {
     FILE* file = fopen(filename, "r");
     if (!file) {
