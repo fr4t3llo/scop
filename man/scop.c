@@ -27,6 +27,7 @@ typedef struct {
     unsigned int v1, v2, v3;
 } Face;
 
+
 Vertex vertices[10000];
 Face faces[10000];
 int vertex_count = 0, face_count = 0;
