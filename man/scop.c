@@ -20,8 +20,6 @@ typedef struct {
 } Vertex;
 
 
-
-
 typedef struct {
     unsigned int v1, v2, v3;
 } Face;
